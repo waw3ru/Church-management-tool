@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	nav(class="navbar navbar-default navbar-static-top")
+		div(class="container-fluid")
+			div(class="navbar-header")
+				a(class="navbar-brand" href="#/") PCEA Nakuru West Parish
+			div(id="navbar" class="navbar-collapse collapse")
+				ul(class="nav navbar-nav navbar-right")
+					li: a(href="#/") Church members
+					li: a(href="#/addMembers") Add member to parish
+					li: a(href="#/addDistricts") Add district to parish
+
+	div(ng-view)

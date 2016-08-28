@@ -1,0 +1,49 @@
+div(class="container")
+
+	div(class="page-header")
+		h4 The church elder districts
+
+	div(class="alert alert-{{districtctrl.alert.type}} alert-dismissable" ng-show="districtctrl.alert")
+		button(type="button" class="close" data-dismiss="alert") &times;
+		strong {{districtctrl.alert.msg}}
+
+
+	div(class="row")
+		div(class="col-md-3 well")
+			div(class="page-header")
+				h4 Add Elders District
+
+			form(role="form" name="addDistrict" ng-submit="addDistrict.$valid && districtctrl.add()" novalidate)
+
+				div(class="form-group")
+					label(class="control-label") Choose the congregation
+					select(class="form-control" ng-model="districtctrl.data.church")
+						option(value="Surburb") Surburb
+						option(value="Mwangaza") Mwangaza
+
+				div(class="form-group")
+					label(class="control-label") Enter the name of the district:
+					input(type="text" class="form-control" ng-model="districtctrl.data.name" ng-minlength="2" required)
+
+				button(class="btn btn-block btn-default" type="submit" ng-disabled="addDistrict.$pristine || addDistrict.$invalid")
+					i(class="fa fa-plus-circle fa-spin")
+					|  Add district
+
+		div(class="col-md-8 col-md-offset-1")
+			h4 PCEA Nakuru West Parish Elder Districts
+			table(class="table table-bordered table-hover")
+				thead
+					tr
+						td Name of the district
+						td Congregation
+						td 
+							input(type="text" class="form-control input-sm" placeholder="search district" ng-model="districtctrl.name")
+						td: strong number of districts: {{districtctrl.number}}
+				tbody
+					tr(ng-repeat="district in districtctrl.districts | filter:districtctrl.name")
+						td {{district.name}}
+						td {{district.church}}
+						td
+							button(class="btn btn-danger btn-sm" type="button" ng-click="districtctrl.delete_district(district._id)")
+								i(class="fa fa-times") 
+								|  Remove

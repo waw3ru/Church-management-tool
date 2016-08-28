@@ -1,0 +1,65 @@
+
+
+<div class="row districts-window">
+
+    <div class="col-md-12">
+
+        <div class="header">
+            <h2><i class="ion ion-ios-filing"></i>&nbsp; Church Districts <hr></h2>
+            <div class="head-btns">
+
+                <button class="btn btn-default"
+                        ng-click="districtsCtrl.getAllDistricts()">
+                    <span class="ion ion-ios-refresh-outline"></span> Refresh
+                </button>
+                <button class="btn btn-default"
+                        ng-click="districtsCtrl.openModal('Add', null)">
+                    <span class="ion ion-ios-plus-outline"></span> Add new districts
+                </button>
+                <button class="btn btn-default">
+                    <span class="ion ion-ios-plus-outline"></span> Send SMS Notification
+                </button>
+            </div>
+
+        </div>
+
+        <div class="districts-content" ng-init="districtsCtrl.getAllDistricts();">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name of district</th>
+                    <th>Elder of district</th>
+                    <th>Elder Phone Number</th>
+                    <th>Congregation</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- data goes here -->
+                <tr ng-repeat="district in districtsCtrl.data">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ district.name }}</td>
+                    <td>{{ district.elder }}</td>
+                    <td>{{ district.phone_number }}</td>
+                    <td>{{ district.congregation.name }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-block btn-primary" ng-click="districtsCtrl.openModal('Update', district._id)">
+                            Update
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-block btn-danger" ng-click="districtsCtrl.removeDistrict(district._id);">
+                            Remove
+                        </button>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

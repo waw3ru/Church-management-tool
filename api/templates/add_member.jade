@@ -1,0 +1,162 @@
+div(class="container")
+	div(class="page-header")
+		h4 Add Church Members
+
+	div(class="alert alert-{{addctrl.alert.type}} alert-dismissable" ng-show="addctrl.alert")
+		button(type="button" class="close" data-dismiss="alert") &times;
+		strong {{addctrl.alert.msg}}
+
+	form(role="form" name="member" ng-submit="member.$valid && addctrl.add()" novalidate)
+		div(class="form-group")
+			label(class="control-label") Choose the congregation
+			select(class="form-control" ng-model="addctrl.data.congregation")
+				option(value="Surburb") Surburb
+				option(value="Mwangaza") Mwangaza
+		div(class="row")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Member id:
+					input(type="text" class="form-control" ng-model="addctrl.data.member_id" ng-minlength="2" required)
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Firstname:
+					input(type="text" class="form-control" ng-model="addctrl.data.firstname" ng-minlength="2" required)
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Middlename:
+					input(type="text" class="form-control" ng-model="addctrl.data.middlename" ng-minlength="2")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Lastname:
+					input(type="text" class="form-control" ng-model="addctrl.data.lastname" ng-minlength="2" required)
+		div(class="row")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Email Address:
+					input(type="text" class="form-control" ng-model="addctrl.data.email" ng-minlength="2")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Telephone Contact:
+					input(type="text" class="form-control" ng-model="addctrl.data.telephone" ng-minlength="2")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") ID number:
+					input(type="text" class="form-control" ng-model="addctrl.data.id_number" ng-minlength="2")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Gender:
+					br
+					input(type="radio" ng-model="addctrl.data.gender" value="male")
+					|  Male &nbsp;
+					input(type="radio" ng-model="addctrl.data.gender" value="female")
+					| Female
+
+		div(class="row")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Age Bracket:
+					select(class="form-control" ng-model="addctrl.data.age_bracket")
+						option
+						option(value="18-25 years") 18-25 years
+						option(value="26-30 years") 26-30 years
+						option(value="31-35 years") 31-35 years
+						option(value="36-45 years") 36-45 years
+						option(value="46-55 years") 46-55 years
+						option(value="56-65 years") 56-65 years
+						option(value="65-over years") 65-over years
+
+
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Marital Status:
+					select(class="form-control" ng-model="addctrl.data.marital_status")
+						option
+						option(value="Married") Married
+						option(value="Divorced") Divorced
+						option(value="Widow") Widow
+						option(value="Widower") Widower
+						option(value="Separate") Separate
+						option(value="Single") Single
+
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") If married, Spouse Name:
+					input(type="text" class="form-control" ng-model="addctrl.data.spouse_name" ng-minlength="2")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Membership duration:
+					select(class="form-control" ng-model="addctrl.data.membership_duration")
+						option
+						option(value="0-1 years") 0-1 years
+						option(value="2-5 years") 2-5 years
+						option(value="6-10 years") 6-10 years
+						option(value="Over 10 years") Over 10 years
+
+		div(class="row")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Profession:
+					input(type="text" class="form-control" ng-model="addctrl.data.profession" ng-minlength="2")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Elder district:
+					select(class="form-control" ng-model="addctrl.data.district")
+						option(ng-repeat="district in addctrl.districts" value="{{district._id}}")
+							|  {{district.name}}
+
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Full member:
+					br
+					input(type="radio" ng-model="addctrl.data.full_member_state" value="true")
+					|  yes &nbsp;
+					input(type="radio" ng-model="addctrl.data.full_member_state" value="false")
+					| no
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Any reason:
+					input(type="text" class="form-control" ng-model="addctrl.data.full_member_reason" ng-minlength="2")
+
+		div(class="row")
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Number of children
+					input(type="text" class="form-control" ng-model="addctrl.data.num_children" ng-minlength="1")
+
+			div(class="col-md-3")
+				div(class="row")
+					div(class="col-md-12")
+						div(class="form-group")
+							label(class="control-label") Active in any church group:
+							select(class="form-control" ng-model="addctrl.data.groups_active")
+								option
+								option(value="true") Yes
+								option(value="false") No
+					div(class="col-md-12")
+						div(class="form-group")
+							label(class="control-label") Which one(s):
+							select(class="form-control" ng-model="addctrl.data.church_group")
+								option
+								option(value="w/guild") woman's guild
+								option(value="pcmf") PCMF
+								option(value="youth") youth
+								option(value="brigade") brigade
+								option(value="church_school") church school
+								option(value="christian education") Christian Education
+								option(value="Intercessory") Intercessory
+					div(class="col-md-12")
+						div(class="form-group")
+							label(class="control-label") If not, Which one(s) would you love to join:
+							select(class="form-control" ng-model="addctrl.data.join")
+								option
+								option(value="w/guild") woman's guild
+								option(value="pcmf") PCMF
+								option(value="youth") youth
+								option(value="brigade") brigade
+								option(value="church_school") church school
+								option(value="christian education") Christian Education
+								option(value="Intercessory") Intercessory
+
+		button(class="btn btn-lg btn-info" style="margin-bottom: 60px;" ng-disabled="member.$pristine || member.$invalid") 
+			i(class="fa fa-plus")
+			|  Add to church members

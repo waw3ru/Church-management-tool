@@ -1,0 +1,75 @@
+
+<div class="modal-header mod-header">
+    <h3 class="modal-title">
+        {{ DMCtrl.state.state }} district
+        <span class="pull-right" ng-click="DMCtrl.closeModal();"><i class="ion ion-ios-close-outline"></i></span>
+    </h3>
+</div>
+<div class="modal-body mod-body" ng-init="DMCtrl.getCongregations();">
+
+    <form name="district" novalidate>
+
+        <div ng-class="['form-group', { 'has-error': district.congregation.$invalid && district.congregation.$dirty }]">
+            <label class="control-label">Select the congregation it belongs to: </label>
+            <select class="form-control"
+                    type="text"
+                    name="congregation"
+                    ng-options="congregation._id as congregation.name for congregation in DMCtrl.congregations track by congregation._id"
+                    ng-model="DMCtrl.current.congregation"
+                    required
+                    aria-describedby="helpcongregation">
+
+                <option ng-repeat="options in DMCtrl.congregations" value="options._id">{{ options.name }}</option>
+
+
+            </select>
+
+            <div ng-messages="district.congregation.$error">
+                <span id="helpcongregation" class="help-block" ng-message="required">Please select the congregation</span>
+            </div>
+
+        </div>
+
+        <div ng-class="['form-group', { 'has-error': district.name.$invalid && district.name.$dirty }]">
+            <label class="control-label">Enter the name of district: </label>
+            <input class="form-control" type="text" name="name" ng-model="DMCtrl.current.name" required aria-describedby="helpname">
+            <div ng-messages="district.name.$error">
+                <span id="helpname" class="help-block" ng-message="required">Please enter name</span>
+            </div>
+        </div>
+
+        <div ng-class="['form-group', { 'has-error': district.elder.$invalid && district.elder.$dirty }]">
+            <label class="control-label">Enter the name of elder: </label>
+            <input class="form-control" type="text" name="elder" ng-model="DMCtrl.current.elder" required aria-describedby="helpelder">
+            <div ng-messages="district.elder.$error">
+                <span id="helpelder" class="help-block" ng-message="required">Please enter name of elder</span>
+            </div>
+        </div>
+
+        <div ng-class="['form-group', { 'has-error': district.phone.$invalid && district.phone.$dirty }]">
+            <label class="control-label">Enter the phone number of elder: </label>
+            <input class="form-control" type="text" name="phone" ng-model="DMCtrl.current.phone_number" required aria-describedby="helpphone">
+            <div ng-messages="district.elder.$error">
+                <span id="helpphone" class="help-block" ng-message="required">Please enter the phone number of elder</span>
+            </div>
+        </div>
+
+        <button class="btn btn-block btn-primary"
+                ng-disabled="district.$invalid || district.$pristine"
+                ng-click="DMCtrl.addDistrict(DMCtrl.current);"
+                ng-show="DMCtrl.state.state === 'Add'">
+                
+            <i class="ion ion-ios-plus"></i> Add
+        </button>
+
+        <button class="btn btn-block btn-warning"
+                ng-disabled="district.$invalid || district.$pristine"
+                ng-click="DMCtrl.updateDistrict(DMCtrl.state.id, DMCtrl.current);"
+                ng-show="DMCtrl.state.state === 'Update'">
+
+            <i class="ion ion-ios-plus"></i> Update
+        </button>
+
+    </form>
+
+</div>

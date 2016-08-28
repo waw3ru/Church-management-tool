@@ -1,0 +1,217 @@
+/*
+* created by waweru
+*/
+
+.members-window{
+  height: auto;
+  padding: 0;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  .col-md-12{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.09);
+    border: 1px solid rgba(0,0,0,0.09);
+    padding: 0;
+
+
+    .header{
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+
+      background: transparent;
+      border: none;
+
+      .title{
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 20px 0 20px;
+        color: #434A54;
+        text-shadow: 0px 1px rgba(0,0,0,0.09);
+        border-bottom: 2px solid #ecf0f1;
+
+        h1{
+          margin: 0;
+          padding: 10px 0 0 20px;
+        }
+      }
+
+      .action-btns{
+        width: 100%;
+        margin: 0;
+        padding: 20px 0 10px;
+        background: #FFFFFF;
+
+        button{
+          margin-left: 20px;
+          margin-right: 20px;
+          margin-bottom: 20px;
+          font-size: 18px;
+          border: none;
+          outline: none;
+
+          &:nth-child(1) {
+            background: #2ecc71;
+            &:active{
+              background: #27ae60;
+            }
+            &:focus{
+              outline: none;
+            }
+          }
+
+          &:nth-child(2) {
+            background: #c0392b;
+            &:active{
+              background: #e74c3c;
+            }
+            &:focus{
+              outline: none;
+            }
+          }
+
+          &:nth-child(3) {
+            background: #e67e22;
+            &:active{
+              background: #d35400;
+            }
+            &:focus{
+              outline: none;
+            }
+          }
+
+        }
+
+      }
+
+    }
+
+    .data-filters{
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      background: #FFFFFF;
+      color: #656D78;
+
+      .title{
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 10px;
+        overflow: hidden;
+        display: block;
+
+        h3{
+          margin: 0;
+          padding: 10px 0;
+          width: 100%;
+          height: auto;
+          text-align: center;
+          white-space: nowrap;
+          text-decoration: none;
+          vertical-align: bottom;
+
+          .filter-toggle{
+            margin-right: 30px;
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+            border: 2px solid #E6E9ED;
+            padding-top: 5px;
+          }
+        }
+
+      }
+
+      .action-items{
+        width: 100%;
+        position: relative;
+        display: block;
+        height: auto;
+        padding: 0;
+        overflow: hidden;
+        margin: 0;
+
+        .filters{
+          width: 100%;
+          height: auto;
+          background:  #DA4453;
+          border-top: 3px solid #ED5565;
+          color: #F5F7FA;
+          padding: 0px 5px 5px;
+          margin: 0;
+
+          .help-block{ padding-left: 30px; padding-top: 10px; margin: 0;  font-size: 18px; color: #F5F7FA; text-align: center;}
+
+          .checkbox{
+            padding: 10px;
+            margin: 0;
+            display: inline-table;
+          }
+
+          button{
+            width: 90%;
+            display: block;
+            white-space: nowrap;
+            margin: 20px 0 20px 40px;
+          }
+        }
+
+        .selectors{
+          width: 100%;
+          height: auto;
+          margin: 0;
+          padding: 0 5px;
+          border-top: 3px solid #3BAFDA;
+          background: #4A89DC;
+          color: #F5F7FA;
+
+          .help-block{ padding-left: 30px; padding-top: 10px; margin: 0;  font-size: 18px; color: #F5F7FA; text-align: center;}
+
+          .row{
+            width: 100%;
+            padding: 5px 0;
+            margin: 0;
+
+            .col-md-2{
+              margin: 5px;
+            }
+
+            .col-md-4{
+              margin-top: 20px;
+              button{
+                background: #434A54;
+                border: none;
+                outline: none;
+
+                &:active{
+                  background: #AAB2BD;
+                }
+                &:focus{
+                  outline: none;
+                }
+              }
+            }
+
+            .col-md-1{
+              margin-top: 20px;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+
+
+  }
+
+}

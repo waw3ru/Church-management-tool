@@ -1,0 +1,65 @@
+﻿#!/usr/bin/env node
+
+var cluster = require("cluster");
+var numCPUs = require("os").cpus().length;
+var debug = require('debug')('PCEA');
+var app = require('../api/server');
+
+
+
+/* clustering of processors */
+
+if (cluster.isMaster) {
+
+	cluster.on("fork", function (worker) {
+      console.log("Attempting to acquire worker" + worker.id);
+    });
+
+    cluster.on("online", function (worker) {
+      console.log("Successfully acquired worker" + worker.id);
+    });
+
+    cluster.on("disconnect", function (worker) {
+      console.log("Worker " + worker.id + " disconnected");
+    });
+
+    var init;
+
+    for (init = 0; init < numCPUs; init++) {
+      console.log('Acquiring child processes');
+      cluster.fork();
+    }
+
+} else {
+
+
+	app.set('port', process.env.PORT || 3000);
+
+	var server = app.listen(app.get('port'), function() {
+	    debug('Express server listening on port ' + server.address().port);
+	});
+    
+    server.on('error', function (error) {
+
+      if (error.syscall !== 'listen') {
+        throw error;
+      }
+
+      switch (error.code) {
+
+      case 'EACCES':
+        console.error('Port requires elevated privileges');
+        process.exit(1);
+        break;
+      case 'EADDRINUSE':
+        console.error('Port is already in use');
+        process.exit(1);
+        break;
+      default:
+        throw error;
+
+      }
+
+    });
+
+}

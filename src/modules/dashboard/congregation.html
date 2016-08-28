@@ -1,0 +1,60 @@
+
+
+<div class="modal-header mod-header">
+    <h2 class="modal-title">
+        {{congregationCtrl.state.state}} a congregation
+        <span class="pull-right" ng-click="congregationCtrl.closeModal();"><i class="ion ion-ios-close-outline"></i></span>
+    </h2>
+</div>
+<div class="modal-body mod-body">
+
+
+    <form name="addCongregation" class="mod-form" novalidate>
+
+        <div ng-class="['form-group', { 'has-error': addCongregation.name.$invalid && addCongregation.name.$dirty }]">
+            <label class="control-label">Enter the name of congregation: </label>
+            <input type="text"
+                   class="form-control"
+                   name="name"
+                   ng-model="congregationCtrl.current.name"
+                   required
+                   aria-describedby="helpname">
+
+            <div ng-messages="addCongregation.name.$error">
+                <span id="helpname" class="help-block" ng-message="required">Please enter name</span>
+            </div>
+
+        </div>
+
+        <div ng-class="['form-group', { 'has-error': addCongregation.location.$invalid && addCongregation.location.$dirty }]">
+            <label class="control-label">Enter where the congregation is located: </label>
+            <input type="text"
+                   class="form-control"
+                   name="location"
+                   ng-model="congregationCtrl.current.location"
+                   required
+                   aria-describedby="helploc">
+
+            <div ng-messages="addCongregation.location.$error">
+                <span id="helploc" class="help-block" ng-message="required">Please enter location</span>
+            </div>
+
+        </div>
+
+        <button class="btn btn-primary btn-block"
+                ng-disabled="addCongregation.$invalid || addCongregation.$pristine"
+                ng-click="congregationCtrl.congregation.add(congregationCtrl.current);"
+                ng-show="congregationCtrl.state.state === 'Add'">
+            <i class="ion ion-ios-plus-outline"></i> Add
+        </button>
+
+        <button class="btn btn-warning btn-block"
+                ng-disabled="addCongregation.$invalid || addCongregation.$pristine"
+                ng-click="congregationCtrl.congregation.update(congregationCtrl.current._id, congregationCtrl.current);"
+                ng-show="congregationCtrl.state.state === 'Update'">
+            <i class="ion ion-ios-plus-outline"></i> Update
+        </button>
+
+    </form>
+
+</div>

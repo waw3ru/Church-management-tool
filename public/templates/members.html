@@ -1,0 +1,209 @@
+
+<div class="row members-window">
+
+    <div class="col-md-12">
+
+
+        <div class="header">
+
+            <div class="title">
+                <h1>All Members</h1>
+            </div>
+
+            <div class="action-btns">
+                <button class="btn btn-default">
+                    <i class="ion ion-ios-loop-strong"></i>
+                    Refresh
+                </button>
+                <button class="btn btn-default">
+                    <i class="ion ion-person-add"></i> Add a member
+                </button>
+                <button class="btn btn-default">
+                    <i class="ion ion-ios-paperplane-outline"></i> Send SMS
+                </button>
+            </div>
+
+        </div>
+
+        <div class="data-filters">
+            <div class="title">
+                <h3>Filter and Search the members
+                    <span class="pull-right filter-toggle" ng-click="membersCtrl.showFilters = !membersCtrl.showFilters">
+                        <span class="fa fa-sort"></span>
+                    </span>
+                </h3>
+            </div>
+
+            <div class="action-items" ng-show="membersCtrl.showFilters">
+
+                <div class="filters">
+                    <p class="help-block"> Select the data you want be displayed:  </p>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="membersCtrl.selectors.middlename"> Show middlename
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="membersCtrl.selectors.telephone"> Show telephone number
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="membersCtrl.selectors.id_number"> show id number
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="membersCtrl.selectors.age_bracket"> show age bracket
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="membersCtrl.selectors.marital_status"> show marital status
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="membersCtrl.selectors.membership_duration"> show membership duration
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="membersCtrl.selectors.profession"> show profession
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-warning" ng-click="membersCtrl.selectors = {};">
+                        <span class="ion ion-close-circled"></span>&nbsp; Clear All
+                    </button>
+
+
+                </div>
+                <div class="selectors">
+
+                    <p class="help-block"> Filter the data by: </p>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+
+                            <div class="form-group" ng-init="membersCtrl.getCongregations();">
+                                <label class="control-label">Congregation: </label>
+                                <select
+                                        class="form-control"
+                                        ng-options="congregation._id as congregation.name for congregation in membersCtrl.congregations track by congregation._id"
+                                        ng-model="membersCtrl.filters.congregation">
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label class="control-label">Gender: </label>
+                                <select class="form-control" ng-model="membersCtrl.filters.gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label class="control-label">Age bracket: </label>
+                                <select class="form-control" ng-model="membersCtrl.filters.age_bracket">
+                                    <option value="18-25 years">18-25 years</option>
+                                    <option value="26-30 years">26-30 years</option>
+                                    <option value="31-35 years">31-35 years</option>
+                                    <option value="36-45 years">36-45 years</option>
+                                    <option value="46-55 years">46-55 years</option>
+                                    <option value="56-65 years">56-65 years</option>
+                                    <option value="65-over years">65-over years</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label class="control-label">Marital Status: </label>
+                                <select class="form-control" ng-model="membersCtrl.filters.marital_status">
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
+                                    <option value="Widow">Widow</option>
+                                    <option value="Widower">Widower</option>
+                                    <option value="Separate">Separate</option>
+                                    <option value="Single">Single</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label class="control-label">Membership duration: </label>
+                                <select class="form-control" ng-model="membersCtrl.filters.membership_duration">
+                                    <option value="0-1 years">0-1 years</option>
+                                    <option value="2-5 years">2-5 years</option>
+                                    <option value="6-10 years">6-10 years</option>
+                                    <option value="Over 10 years">Over 10 years</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group" ng-init="membersCtrl.getDistricts();">
+                                <label class="control-label">District: </label>
+                                <select
+                                        class="form-control"
+                                        ng-options="district._id as district.name for district in membersCtrl.districts track by district._id"
+                                        ng-model="membersCtrl.filters.district">
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <button class="btn btn-block btn-info">
+                                <i class="ion ion-funnel"></i>
+                                Request filtered data
+                            </button>
+                        </div>
+
+                        <div class="col-md-1">
+                            <button class="btn btn-sm btn-danger" ng-click="membersCtrl.filters = {};">
+                                <span class="ion ion-close-circled"></span>&nbsp; Clear All
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- todo: add a search field -->
+                <div class="search"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="data-table">
+
+        </div>
+
+    </div>
+
+</div>

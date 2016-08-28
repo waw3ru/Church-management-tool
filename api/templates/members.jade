@@ -1,0 +1,209 @@
+div(class="container")
+	div(class="page-header")
+		h4 Church Members 
+			small: strong {{membersctrl.number}}
+		input(type="text" class="form-control input-sm" placeholder="search member id number of members {{membersctrl.number}}" ng-model="membersctrl.id")
+
+	div(class="form-group")
+		|  member id: 
+		input(type="checkbox" ng-model="membersctrl.fields.member_id")
+
+		|  congregation: 
+		input(type="checkbox" ng-model="membersctrl.fields.congregation")
+
+		|  firstname: 
+		input(type="checkbox" ng-model="membersctrl.fields.firstname") 
+
+		|  middlename: 
+		input(type="checkbox" ng-model="membersctrl.fields.middlename") 
+
+		|  lastname: 
+		input(type="checkbox" ng-model="membersctrl.fields.lastname") 
+
+		|  email: 
+		input(type="checkbox" ng-model="membersctrl.fields.email") 
+
+		|  telephone: 
+		input(type="checkbox" ng-model="membersctrl.fields.telephone") 
+
+		|  id number: 
+		input(type="checkbox" ng-model="membersctrl.fields.id_number") 
+
+		|  gender: 
+		input(type="checkbox" ng-model="membersctrl.fields.gender") 
+
+		|  age bracket: 
+		input(type="checkbox" ng-model="membersctrl.fields.age_bracket")
+
+		|  district: 
+		input(type="checkbox" ng-model="membersctrl.fields.district") 
+
+		|  marital status: 
+		input(type="checkbox" ng-model="membersctrl.fields.marital_status") 
+
+		|  membership duration: 
+		input(type="checkbox" ng-model="membersctrl.fields.membership_duration") 
+
+		|  profession: 
+		input(type="checkbox" value="profession" ng-model="membersctrl.fields.profession") 
+
+		|  full members: 
+		input(type="checkbox" value="full_member" ng-model="membersctrl.fields.full_member") 
+
+		|  Children: 
+		input(type="checkbox" value="children" ng-model="membersctrl.fields.children") 
+
+		|  Church groups: 
+		input(type="checkbox" value="church_groups" ng-model="membersctrl.fields.church_groups")
+
+	form(role="form" name="select" ng-submit="select.$valid && membersctrl.get()" novalidate)		
+		div(class="row well")
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Congregation:
+					select(class="form-control" ng-model="membersctrl.data.congregation")
+						option
+						option(value="Surburb") Surburb
+						option(value="Mwangaza") Mwangaza
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Gender:
+					select(class="form-control" ng-model="membersctrl.data.gender")
+						option
+						option(value="male") Male
+						option(value="female") Female
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Age Bracket:
+						select(class="form-control" ng-model="membersctrl.data.age_bracket")
+							option
+							option(value="18-25 years") 18-25 years
+							option(value="26-30 years") 26-30 years
+							option(value="31-35 years") 31-35 years
+							option(value="36-45 years") 36-45 years
+							option(value="46-55 years") 46-55 years
+							option(value="56-65 years") 56-65 years
+							option(value="65-over years") 65-over years
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Marital Status:
+					select(class="form-control" ng-model="membersctrl.data.marital_status")
+						option
+						option(value="Married") Married
+						option(value="Divorced") Divorced
+						option(value="Widow") Widow
+						option(value="Widower") Widower
+						option(value="Separate") Separate
+						option(value="Single") Single
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Membership duration:
+					select(class="form-control" ng-model="membersctrl.data.membership_duration")
+						option
+						option(value="0-1 years") 0-1 years
+						option(value="2-5 years") 2-5 years
+						option(value="6-10 years") 6-10 years
+						option(value="Over 10 years") Over 10 years
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Elder district:
+					select(class="form-control" ng-model="membersctrl.data.district")
+						option
+						option(ng-repeat="district in membersctrl.districts" value="{{district._id}}")
+							|  {{district.name}}
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Full member
+					select(class="form-control" ng-model="membersctrl.data.full_member_state")
+						option
+						option(value="true") Yes
+						option(value="false") No
+			div(class="col-md-3")
+				div(class="form-group")
+					label(class="control-label") Active in church group:
+					select(class="form-control" ng-model="membersctrl.data.groups_active")
+						option
+						option(value="true") Yes
+						option(value="false") No
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Church groups:
+					select(class="form-control" ng-model="membersctrl.data.church_group")
+						option
+						option(value="w/guild") women's guild
+						option(value="pcmf") PCMF
+						option(value="youth") youth
+						option(value="brigade") brigade
+						option(value="church_school") church school
+			div(class="col-md-2")
+				div(class="form-group")
+					label(class="control-label") Church to join:
+					select(class="form-control" ng-model="membersctrl.data.join")
+						option
+						option(value="w/guild") women's guild
+						option(value="pcmf") PCMF
+						option(value="youth") youth
+						option(value="brigade") brigade
+						option(value="church_school") church school
+
+			div(class="col-md-2 pull-right")
+				button(class="btn btn-danger" type="submit") Get members
+
+
+
+
+
+
+
+
+
+
+div(class="container-fluid")
+	table(class="table table-bordered table-striped table-hover")
+		thead
+			tr
+				td
+				td(ng-show="membersctrl.fields.member_id") member id
+				td(ng-show="membersctrl.fields.congregation") congregation
+				td(ng-show="membersctrl.fields.firstname") Firstname
+				td(ng-show="membersctrl.fields.middlename") Middlename
+				td(ng-show="membersctrl.fields.lastname") Lastname
+				td(ng-show="membersctrl.fields.email") Email
+				td(ng-show="membersctrl.fields.telephone") Telephone
+				td(ng-show="membersctrl.fields.id_number") Id
+				td(ng-show="membersctrl.fields.gender") Gender
+				td(ng-show="membersctrl.fields.age_bracket") Age bracket
+				td(ng-show="membersctrl.fields.marital_status") Marital Status
+				td(ng-show="membersctrl.fields.membership_duration") Membership duration
+				td(ng-show="membersctrl.fields.profession") Profession
+				td(ng-show="membersctrl.fields.district") Elder district
+				td(ng-show="membersctrl.fields.full_member") Full Member
+				td(ng-show="membersctrl.fields.children") children 
+				td(ng-show="membersctrl.fields.church_groups") church groups
+		tbody
+			tr(ng-repeat="member in membersctrl.members | filter:membersctrl.id")
+				td: a(ng-href="#/update_member/{{member._id}}" class="btn btn-sm btn-warning") update
+				td(ng-show="membersctrl.fields.member_id") {{member.member_id}}
+				td(ng-show="membersctrl.fields.congregation") {{member.congregation}}
+				td(ng-show="membersctrl.fields.firstname") {{member.firstname}}
+				td(ng-show="membersctrl.fields.middlename") {{member.middlename}}
+				td(ng-show="membersctrl.fields.lastname") {{member.lastname}}
+				td(ng-show="membersctrl.fields.email") {{member.email}}
+				td(ng-show="membersctrl.fields.telephone") {{member.telephone}}
+				td(ng-show="membersctrl.fields.id_number") {{member.id_number}}
+				td(ng-show="membersctrl.fields.gender") {{member.gender}}
+				td(ng-show="membersctrl.fields.age_bracket") {{member.age_bracket}}
+				td(ng-show="membersctrl.fields.marital_status") {{member.marital_status}}
+				td(ng-show="membersctrl.fields.membership_duration") {{member.membership_duration}}
+				td(ng-show="membersctrl.fields.profession") {{member.profession}}
+				td(ng-show="membersctrl.fields.district") {{member.district.name}}
+				td(ng-show="membersctrl.fields.full_member") {{member.full_member_state}}
+				td(ng-show="membersctrl.fields.children") ({{member.children.length}}) {{member.num_children}}
+				td(ng-show="membersctrl.fields.church_groups") {{member.groups_active}}
+
+
+
+
+
+
+

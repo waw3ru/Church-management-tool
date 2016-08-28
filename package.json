@@ -1,0 +1,46 @@
+{
+ "name" : "PCEA_nakuruwest_parish",
+ "private" : true,
+ "version": "0.0.1",
+ "description" : "A web application for registering church members",
+ "contributors" : [{
+    "name" : "John Waweru",
+    "email" : "wambugu.john.waweru@outlook.com"
+  }],
+ "main" : " ./bin/www",
+ "scripts" : {
+   "start" : "nodemon ./bin/www"
+ },
+ "dependencies" : {
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "debug": "*",
+    "express": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "express-session": "*",
+    "connect-mongo": "*",
+    "serve-favicon": "*"
+ },
+  "devDependencies": {
+    "gulp-jshint": "*",
+    "gulp-clean-css": "*",
+    "gulp-shell": "*",
+    "node-sass": "*",
+    "del": "*",
+    "gulp": "*",
+    "gulp-changed": "*",
+    "gulp-flatten": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-sequence": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "browser-sync": "*",
+    "jshint-stylish": "*",
+    "jshint": "*"
+  }
+}

@@ -1,0 +1,80 @@
+
+
+<div class="row dashboard-window">
+
+    <div class="col-md-12">
+
+        <div class="header">
+            <h2><span class="ion ion-ios-analytics"></span> Dashboard <hr></h2>
+            <div class="dash-top-btns">
+
+                <button class="btn btn-default">
+                    <span class="ion ion-ios-refresh-outline"></span> Refresh analytics
+                </button>
+                <button class="btn btn-default"
+                        ng-click="dashCtrl.congregation.open('Add', null);">
+                    <span class="ion ion-ios-plus-outline"></span> Add new Congregation
+                </button>
+            </div>
+        </div>
+
+
+        <div class="dashboard-content">
+            <!-- show the number of congregations in db-->
+            <div class="congregations" ng-init="dashCtrl.congregation.getAll();">
+
+                <div class="congregations-header">
+                    <h4><span class="ion ion-ios-grid-view"></span> List of all congregations <hr></h4>
+                </div>
+
+                <div class="congregations-data-table">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name of congregation</th>
+                                <th>Location of congregation</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- data goes here -->
+                            <tr ng-repeat="congregation in dashCtrl.congregation.data">
+
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ congregation.name }}</td>
+                                <td>{{ congregation.location }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-block btn-primary"
+                                            ng-click="dashCtrl.congregation.open('Update', congregation._id);">
+
+                                        Update
+
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-block btn-danger"
+                                            ng-click="dashCtrl.congregation.remove(congregation._id, $index);">
+                                        Remove
+
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- following are other data tables -->
+
+        </div>
+
+        <div class="dashboard-visualization"></div>
+
+    </div>
+
+</div>

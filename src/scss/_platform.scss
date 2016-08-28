@@ -1,0 +1,87 @@
+/*
+* created by waweru
+*/
+
+
+.platform-top{
+  z-index: 99 !important;
+  width: 100%;
+  height: auto;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  background: #34495e;
+  color: #fff;
+  text-align: justify;
+  box-shadow: 0px 4px 3px rgba(0,0,0,0.169);
+  border-bottom: 1px solid rgba(0,0,0,0.1) ;
+
+  .menu{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+
+    li{
+      display: inline-block;
+      width: 200px;
+      height: auto;
+      margin: 0;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-bottom: 7px solid transparent;
+      transition: background .5s ease-in,
+                  border-bottom .6s ease;
+
+      &:hover{
+        background: #d35400;
+        border-bottom-color: #e67e22;
+      }
+
+      &:active{
+        background: #c0392b;
+        outline: none;
+      }
+      &:focus{
+        outline: none;
+      }
+
+
+    }
+
+    .menu-title{
+      width: auto;
+      text-align: left;
+
+      &:hover{
+        background: #2980b9;
+        border-bottom-color: #2980b9;
+      }
+
+      h4{
+        height: 100%;
+        margin: 0 10px 0 30px;
+        padding: 0;
+        text-align: center;
+        font-weight: 300;
+      }
+    }
+
+    .active{
+      background: #f39c12;
+      border-bottom: 7px solid #f1c40f;
+      color: #ecf0f1;
+
+      &:hover{
+        background: #2c3e50;
+        border-bottom-color: #2c3e50;
+      }
+
+    }
+
+  }
+
+}
